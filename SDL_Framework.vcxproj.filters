@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Galaga.h">
+      <UniqueIdentifier>{5167e20a-7b17-4a70-a1e0-91bbd1cac9ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Galaga.cpp">
+      <UniqueIdentifier>{79c1d7be-14f6-46e6-baa8-abef8e854884}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Singletons">
+      <UniqueIdentifier>{7bbd681b-b116-4642-bbf7-1549e844566d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities">
+      <UniqueIdentifier>{ebf4821e-82fc-49a0-9d3e-77fdb6df9cb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Colliders">
+      <UniqueIdentifier>{3231e85e-2818-4d31-9997-14adf8f8ce7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Helpers">
+      <UniqueIdentifier>{a89cadb6-0a52-4f68-a366-762089949b9a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SDL_Framework.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleCollider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StartScreen.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Star.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="StarLayer.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundStars.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Scoreboard.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenManager.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScreen.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaySideBar.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StartScreen.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Star.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="StarLayer.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundStars.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Scoreboard.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenManager.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files\Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Header Files\Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsManager.h">
+      <Filter>Header Files\Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioManager.h">
+      <Filter>Header Files\Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Header Files\Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Header Files\Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedTexture.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEntity.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysEntity.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Header Files\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollider.h">
+      <Filter>Header Files\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleCollider.h">
+      <Filter>Header Files\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="MathHelper.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsHelper.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScreen.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaySideBar.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

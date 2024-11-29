@@ -1,0 +1,45 @@
+﻿  PhysEntity.cpp
+C:\Users\joshc\source\repos\SDL_Framework\MathHelper.h(92,33): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'PhysEntity.cpp')
+  
+C:\Users\joshc\source\repos\SDL_Framework\MathHelper.h(91,47): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'PhysEntity.cpp')
+  
+C:\Users\joshc\source\repos\SDL_Framework\MathHelper.h(124,44): warning C4805: '!=': unsafe mix of type 'bool' and type 'float' in operation
+  (compiling source file 'PhysEntity.cpp')
+  
+C:\Users\joshc\source\repos\SDL_Framework\PhysicsHelper.h(101,1): warning C4715: 'SDLFramework::BoxVsBoxCollision': not all control paths return a value
+  SDL_Framework.vcxproj -> C:\Users\joshc\source\repos\SDL_Framework\x64\Debug\SDL_Framework.exe
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\libavif-16.dll
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\libgme.dll
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\libogg-0.dll
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\libopus-0.dll
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\libopusfile-0.dll
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\libtiff-5.dll
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\libwavpack-1.dll
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\libwebp-7.dll
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\libwebpdemux-2.dll
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\libxmp.dll
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\SDL2.dll
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\SDL2_image.dll
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\SDL2_mixer.dll
+  C:\Users\joshc\source\repos\SDL_Framework\\dep\devel\x64\SDL2_ttf.dll
+         14 file(s) copied.
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\ARCADE.TTF
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\Black.png
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\BoxCollider.png
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\BroadPhaseCollider.png
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\CircleCollider.png
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\Cursor.png
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\emulogic.ttf
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\GalagaLogo.png
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\LevelFlags.png
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\namco__.ttf
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\PlayerExplosion.png
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\PlayerShips.png
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\SpriteSheet.png
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\Stars.png
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\Music\GameStart.wav
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\SFX\coin_credit.wav
+  C:\Users\joshc\source\repos\SDL_Framework\\Assets\SFX\FlagSound.wav
+  17 File(s) copied
