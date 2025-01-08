@@ -31,6 +31,12 @@
     <Filter Include="Header Files\Helpers">
       <UniqueIdentifier>{a89cadb6-0a52-4f68-a366-762089949b9a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{2a3c5aa6-a8cc-46ec-936c-103595f4ea1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TXML">
+      <UniqueIdentifier>{8cc5f507-ac36-4f78-b25c-b8803a713002}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SDL_Framework.cpp">
@@ -109,6 +115,36 @@
       <Filter>Galaga.cpp</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="BezierPath.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Formation.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Butterfly.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Wasp.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptureBeam.cpp">
+      <Filter>Galaga.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>TXML</Filter>
+    </ClCompile>
+    <ClCompile Include="CoPilot.cpp">
       <Filter>Galaga.cpp</Filter>
     </ClCompile>
   </ItemGroup>
@@ -194,5 +230,46 @@
     <ClInclude Include="Player.h">
       <Filter>Galaga.h</Filter>
     </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="BezierPath.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Formation.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Butterfly.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Wasp.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptureBeam.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>TXML</Filter>
+    </ClInclude>
+    <ClInclude Include="CoPilot.h">
+      <Filter>Galaga.h</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Data\LevelOne.xml">
+      <Filter>Data</Filter>
+    </Xml>
+    <Xml Include="LevelTwo.xml">
+      <Filter>Data</Filter>
+    </Xml>
+    <Xml Include="LevelThree.xml">
+      <Filter>Data</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

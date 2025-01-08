@@ -47,8 +47,8 @@ private:
 
 	//Play Mode
 	GameEntity* mPlayModes;
-	Texture* mOnePlayerMode;
-	Texture* mTwoPlayerMode;
+	Texture* mArcadeMode;
+	Texture* mSurvivalMode;
 	Texture* mCursor;
 	Vector2 mCursorStartPos;
 	Vector2 mCursorOffsetPos;

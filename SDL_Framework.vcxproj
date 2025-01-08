@@ -114,7 +114,9 @@
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(ProjectDir)\dep\devel\x64\*.dll" "$(OutDir)
-xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
+
+xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s
+xcopy "$(ProjectDir)\Data\*" "$(OutDir)Data\" /y /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -137,7 +139,9 @@ xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(ProjectDir)\dep\devel\x64\*.dll" "$(OutDir)
-xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
+
+xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s
+xcopy "$(ProjectDir)\Data\*" "$(OutDir)Data\" /y /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -145,9 +149,17 @@ xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BackgroundStars.cpp" />
+    <ClCompile Include="BezierPath.cpp" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Butterfly.cpp" />
+    <ClCompile Include="CaptureBeam.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="CoPilot.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Formation.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScreen.cpp" />
@@ -167,15 +179,25 @@ xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClCompile Include="SDL_Framework.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
+    <ClCompile Include="Wasp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatedTexture.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BackgroundStars.h" />
+    <ClInclude Include="BezierPath.h" />
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="BoxCollider.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Butterfly.h" />
+    <ClInclude Include="CaptureBeam.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
+    <ClInclude Include="CoPilot.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Formation.h" />
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Graphics.h" />
@@ -196,6 +218,13 @@ xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClInclude Include="StartScreen.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="tinyxml2.h" />
+    <ClInclude Include="Wasp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Data\LevelOne.xml" />
+    <Xml Include="LevelThree.xml" />
+    <Xml Include="LevelTwo.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

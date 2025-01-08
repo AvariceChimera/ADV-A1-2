@@ -89,4 +89,9 @@ namespace SDLFramework{
 
 		return false;
 	}
+
+	std::string PhysEntity::Tag() {
+		return mTag;
+	}
+
 }

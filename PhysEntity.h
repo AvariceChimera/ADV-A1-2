@@ -17,8 +17,12 @@ namespace SDLFramework {
 
 		virtual void Render() override;
 
-	//protected:
+		std::string Tag();
+
+	protected:
 		unsigned long mID;
+
+		std::string mTag;
 
 		std::vector<Collider*> mColliders;
 

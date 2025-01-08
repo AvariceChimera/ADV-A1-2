@@ -45,17 +45,17 @@ StartScreen::StartScreen() {
 
 	//play mode
 	mPlayModes = new GameEntity(Graphics::SCREEN_WIDTH * 0.5, Graphics::SCREEN_HEIGHT * 0.55f);
-	mOnePlayerMode = new Texture("1 Player", "emulogic.ttf", 32, { 230, 230, 230});
-	mTwoPlayerMode = new Texture("2 Player", "emulogic.ttf", 32, { 230, 230, 230 });
+	mArcadeMode = new Texture("Arcade", "emulogic.ttf", 32, { 230, 230, 230});
+	mSurvivalMode = new Texture("Survival", "emulogic.ttf", 32, { 230, 230, 230 });
 	mCursor = new Texture("Cursor.png");
 
 	mPlayModes->Parent(this);
-	mOnePlayerMode->Parent(mPlayModes);
-	mTwoPlayerMode->Parent(mPlayModes);
+	mArcadeMode->Parent(mPlayModes);
+	mSurvivalMode->Parent(mPlayModes);
 	mCursor->Parent(mPlayModes);
 
-	mOnePlayerMode->Position(0.0f, -35.0f);
-	mTwoPlayerMode->Position(0.0f, 35.0f);
+	mArcadeMode->Position(0.0f, -35.0f);
+	mSurvivalMode->Position(0.0f, 35.0f);
 	mCursor->Position(-175.0f, -35.0f);
 
 	//selection variables
@@ -65,7 +65,7 @@ StartScreen::StartScreen() {
 
 	//bottom bar
 	mBottomBar = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.7f);
-	mNamco = new Texture("namco", "namco__.tf", 36, { 200, 0, 0 });
+	mNamco = new Texture("namco", "namco__.ttf", 36, { 200, 0, 0 });
 	mDates = new Texture("1981 1985 NAMCO LTD.", "emulogic.ttf", 32, { 230, 230, 230 });
 	mRights = new Texture("ALL RIGHTS RESERVED", "emulogic.ttf", 32, { 230, 230, 230 });
 
@@ -155,8 +155,8 @@ void StartScreen::Render() {
 
 
 	//play bar
-	mOnePlayerMode->Render();
-	mTwoPlayerMode->Render();
+	mArcadeMode->Render();
+	mSurvivalMode->Render();
 	mCursor->Render();
 
 	//bottom bar
@@ -183,10 +183,10 @@ StartScreen::~StartScreen() {
 
 	delete mPlayModes;
 	mPlayModes = nullptr;
-	delete mOnePlayerMode;
-	mOnePlayerMode = nullptr;
-	delete mTwoPlayerMode;
-	mTwoPlayerMode = nullptr;
+	delete mArcadeMode;
+	mArcadeMode = nullptr;
+	delete mSurvivalMode;
+	mSurvivalMode = nullptr;
 	delete mCursor;
 	mCursor = nullptr;
 

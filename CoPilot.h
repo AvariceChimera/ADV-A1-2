@@ -1,25 +1,16 @@
 #pragma once
-#include "AnimatedTexture.h"
-#include "InputManager.h"
-#include "AudioManager.h"
-#include "BoxCollider.h"
-#include "Bullet.h"
+#include "Player.H"
 
-using namespace SDLFramework;
-
-class Player : public PhysEntity {
+class CoPilot : public PhysEntity {
 public:
-	Player();
-	~Player();
+	CoPilot();
+	~CoPilot();
 
 	void Update() override;
 	void Render() override;
 
 	void Visible(bool visible);
 	bool IsAnimating();
-
-	int Score();
-	int Lives();
 
 	void AddScore(int change);
 
@@ -46,10 +37,9 @@ private:
 	AnimatedTexture* mDeathAnimation;
 
 	int mScore;
-	int mLives;
 
 	float mMoveSpeed;
-	Vector2 mMoveBounds;
+ 	Vector2 mMoveBounds;
 
 	void HandleMovement();
 	void HandleFiring();

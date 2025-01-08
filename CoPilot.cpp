@@ -1,7 +1,7 @@
-#include "Player.h"
+#include "CoPilot.h"
 #include "PhysicsManager.h"
 
-void Player::HandleMovement() {
+void CoPilot::HandleMovement() {
 	if (mInput->KeyDown(SDL_SCANCODE_A) || mInput->KeyDown(SDL_SCANCODE_LEFT)) {
 		Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
 	}
@@ -20,7 +20,7 @@ void Player::HandleMovement() {
 	Position(pos);
 }
 
-void Player::HandleFiring() {
+void CoPilot::HandleFiring() {
 	if (mInput->KeyPressed(SDL_SCANCODE_SPACE)) {
 		for (int i = 0; i < MAX_BULLETS; i++) {
 			if (!mBullets[i]->Active()) {
@@ -32,7 +32,7 @@ void Player::HandleFiring() {
 	}
 }
 
-Player::Player() {
+CoPilot::CoPilot() {
 	mTimer = Timer::Instance();
 	mInput = InputManager::Instance();
 	mAudio = AudioManager::Instance();
@@ -40,9 +40,6 @@ Player::Player() {
 	mVisible = false;
 	mAnimating = false;
 	mWasHit = false;
-
-	mScore = 0;
-	mLives = 2;
 
 	mMoveSpeed = 200.0f;
 	//the below vector is a min/max not a coordinate location
@@ -58,7 +55,7 @@ Player::Player() {
 	mDeathAnimation->SetWrapMode(AnimatedTexture::Once);
 
 	//PhysEnt ops
-	AddCollider(new BoxCollider(Vector2(16.0f,67.0f)));
+	AddCollider(new BoxCollider(Vector2(16.0f, 67.0f)));
 	AddCollider(new BoxCollider(Vector2(20.0f, 37.0f)), Vector2(18.0f, 10.0f));
 	AddCollider(new BoxCollider(Vector2(20.0f, 37.0f)), Vector2(-18.0f, 10.0f));
 
@@ -67,11 +64,9 @@ Player::Player() {
 	for (int i = 0; i < MAX_BULLETS; i++) {
 		mBullets[i] = new Bullet(true);
 	}
-
-	mTag = "Player";
 }
 
-Player::~Player() {
+CoPilot::~CoPilot() {
 	mTimer = nullptr;
 	mInput = nullptr;
 	mAudio = nullptr;
@@ -88,49 +83,35 @@ Player::~Player() {
 	}
 }
 
-void Player::Visible(bool visible) {
+void CoPilot::Visible(bool visible) {
 	mVisible = visible;
 }
 
-void Player::AddScore(int change) {
- 	mScore += change;
+void CoPilot::AddScore(int change) {
+	mScore += change;
 }
 
-bool Player::IsAnimating() {
+bool CoPilot::IsAnimating() {
 	return mAnimating;
 }
 
-int Player::Score() {
-	return mScore;
-}
-
-int Player::Lives() {
-	return mLives;
-}
-
-bool Player::WasHit() {
+bool CoPilot::WasHit() {
 	return mWasHit;
 }
 
-bool Player::IgnoreCollisions() {
-	return !mVisible || mAnimating || !Active();
+bool CoPilot::IgnoreCollisions() {
+	return !mVisible || mAnimating;
 }
 
-void Player::Hit(PhysEntity* other) {
-	mLives -= 1;
+void CoPilot::Hit(PhysEntity* other) {
 	mAnimating = true;
 	mDeathAnimation->ResetAnimation();
 	mWasHit = true;
 	mAudio->PlaySFX("PlayerExplosion.wav");
 }
 
-void Player::Update() {
+void CoPilot::Update() {
 	if (mAnimating) {
-
-		if (mWasHit) {
-			mWasHit = false;
-		}
-
 		mDeathAnimation->Update();
 		mAnimating = mDeathAnimation->IsAnimating();
 	}
@@ -146,7 +127,7 @@ void Player::Update() {
 	}
 }
 
-void Player::Render() {
+void CoPilot::Render() {
 	if (mVisible) {
 		if (mAnimating) {
 			mDeathAnimation->Render();
