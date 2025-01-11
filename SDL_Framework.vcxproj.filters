@@ -268,8 +268,5 @@
     <Xml Include="LevelTwo.xml">
       <Filter>Data</Filter>
     </Xml>
-    <Xml Include="LevelThree.xml">
-      <Filter>Data</Filter>
-    </Xml>
   </ItemGroup>
 </Project>

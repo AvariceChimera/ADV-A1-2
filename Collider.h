@@ -20,7 +20,7 @@ namespace SDLFramework {
 		ColliderType mType;
 
 		//collider.h can draw or hide collision boxes
-		static const bool DEBUG_COLLIDERS = false;
+		static const bool DEBUG_COLLIDERS = true;
 		Texture* mDebugTexture;
 
 		void SetDebugTexture(Texture* texture);

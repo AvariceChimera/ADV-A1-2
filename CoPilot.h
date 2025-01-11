@@ -1,46 +1,26 @@
 #pragma once
-#include "Player.H"
+#include "PhysEntity.h"
+#include "Bullet.h"
+#include "InputManager.h"
+
+using namespace SDLFramework;
 
 class CoPilot : public PhysEntity {
 public:
+	void Hit(PhysEntity* other) override;
+	bool IgnoreCollisions() override;
 	CoPilot();
 	~CoPilot();
-
+	bool GetWasHit();
+	void ResetWasHit();
 	void Update() override;
 	void Render() override;
-
-	void Visible(bool visible);
-	bool IsAnimating();
-
-	void AddScore(int change);
-
-	bool WasHit();
-
-	//Inhetited from PhysEnt
-	bool IgnoreCollisions() override;
-	void Hit(PhysEntity* other) override;
+	void HandleFiring();
 
 private:
 	static const int MAX_BULLETS = 5;
 	Bullet* mBullets[MAX_BULLETS];
-
 	bool mWasHit;
-
-	Timer* mTimer;
 	InputManager* mInput;
-	AudioManager* mAudio;
-
-	bool mVisible;
-	bool mAnimating;
-
 	Texture* mShip;
-	AnimatedTexture* mDeathAnimation;
-
-	int mScore;
-
-	float mMoveSpeed;
- 	Vector2 mMoveBounds;
-
-	void HandleMovement();
-	void HandleFiring();
 };

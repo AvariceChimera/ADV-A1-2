@@ -4,6 +4,7 @@
 #include "AudioManager.h"
 #include "BoxCollider.h"
 #include "Bullet.h"
+#include "CoPilot.h"
 
 using namespace SDLFramework;
 
@@ -14,6 +15,7 @@ public:
 
 	void Update() override;
 	void Render() override;
+	void DisplayCoPilot();
 
 	void Visible(bool visible);
 	bool IsAnimating();
@@ -45,12 +47,23 @@ private:
 	Texture* mShip;
 	AnimatedTexture* mDeathAnimation;
 
+	CoPilot* mCoPilot;
+
 	int mScore;
 	int mLives;
+
+	float mCaptureTimer;
+	float mCaptureTotalTime;
+	bool mCaptured;
+
+	const float EPSILON = 0.05f;
 
 	float mMoveSpeed;
 	Vector2 mMoveBounds;
 
+	Vector2 mCaptureBeam;
+
+	void HandleCapturedState();
 	void HandleMovement();
 	void HandleFiring();
 };

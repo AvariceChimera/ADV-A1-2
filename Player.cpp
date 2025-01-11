@@ -46,7 +46,7 @@ Player::Player() {
 
 	mMoveSpeed = 200.0f;
 	//the below vector is a min/max not a coordinate location
-	mMoveBounds = Vector2(0.0f, 800.0f);
+	mMoveBounds = Vector2(0.0f, 750.0f);
 
 	mShip = new Texture("PlayerShips.png", 0, 0, 60, 64);
 	mShip->Parent(this);
@@ -69,6 +69,15 @@ Player::Player() {
 	}
 
 	mTag = "Player";
+
+	mCaptureTimer = 0.0f;
+	mCaptureTotalTime = 2.5f;
+
+	mCoPilot = new CoPilot();
+	mCoPilot->Parent(this);
+	mCoPilot->Position(Vector2(65.0f, 0.0f));
+	mCoPilot->Active(false);
+
 }
 
 Player::~Player() {
@@ -117,16 +126,63 @@ bool Player::IgnoreCollisions() {
 }
 
 void Player::Hit(PhysEntity* other) {
-	mLives -= 1;
-	mAnimating = true;
-	mDeathAnimation->ResetAnimation();
-	mWasHit = true;
-	mAudio->PlaySFX("PlayerExplosion.wav");
+	if (other->Tag() == "CaptureBeam") {
+		mCaptured = true;
+		mCaptureBeam = other->Position(World);
+		std::cout << "we've been captured" << std::endl;
+	}
+	else {
+		if (mCoPilot->Active()) {
+			mCoPilot->Active(false);
+		}
+		else {
+			//mLives -= 1;
+			//mAnimating = true;
+			//mDeathAnimation->ResetAnimation();
+			//mWasHit = true;
+			//mAudio->PlaySFX("PlayerExplosion.wav");
+		}
+	}
+}
+
+void Player::HandleCapturedState() {
+	Active(false);
+	mCaptureTimer += mTimer->DeltaTime();
+	if (mCaptureTimer <= mCaptureTotalTime) {
+		if ((mCaptureBeam - Position()).MagnitudeSqr() > EPSILON * mMoveSpeed / 25.0f) {
+			//Player::Rotate(atan2(dist.y, dist.x) * RAD_TO_DEG + 90.0f);
+			Vector2 dist = mCaptureBeam - Position(World);
+			Translate(dist.Normalized() * mMoveSpeed * mTimer->DeltaTime(), World);
+		}
+		else {
+			Rotate(100.0f);
+		}
+	}
+	else {
+		if (mCoPilot->Active()) {
+			mCoPilot->Active(false);
+		}
+		else {
+			mLives -= 1;
+			mAnimating = true;
+			mDeathAnimation->ResetAnimation();
+			mWasHit = true;
+			mAudio->PlaySFX("PlayerExplosion.wav", 0, -1);
+			mCaptured = false;
+			mCaptureTimer = 0.0f;
+		}
+	}
+}
+
+void Player::DisplayCoPilot() {
+	if (!mCoPilot->Active()) {
+		mCoPilot->Active(true);
+
+	}
 }
 
 void Player::Update() {
 	if (mAnimating) {
-
 		if (mWasHit) {
 			mWasHit = false;
 		}
@@ -135,7 +191,13 @@ void Player::Update() {
 		mAnimating = mDeathAnimation->IsAnimating();
 	}
 	else {
+		if (mCaptured) {
+			HandleCapturedState();
+		}
 		if (Active()) {
+			if (mCoPilot->Active()) {
+				mCoPilot->Update();
+			}
 			HandleMovement();
 			HandleFiring();
 		}
@@ -153,6 +215,9 @@ void Player::Render() {
 		}
 		else {
 			mShip->Render();
+			if (mCoPilot->Active()) {
+				mCoPilot->Render();
+			}
 		}
 
 		PhysEntity::Render();

@@ -154,17 +154,23 @@ Boss::Boss(int path, int index, bool challenge) : Enemy(path, index, challenge) 
     mHostage = new Texture("PlayerShips.png", 60, 0, 60, 64);
     mHostage->Parent(this);
     mHostage->Position(0.0f, -64.0f);
+    mDisplayHostage = false;
 
 	mType = Enemy::Boss;
 
     mCaptureDive = false;
     mCurrentPath = 0;
     mCapturing = false;
+    mCaptureSuccess = false;
 
     mCaptureBeam = new CaptureBeam();
-    mCaptureBeam->Parent(this);
-    mCaptureBeam->Position(0.0f, -190.0f);
-    mCaptureBeam->Rotation(180.0f);
+    mCaptureBeam->AnimatedTexture::Parent(this);
+    mCaptureBeam->AnimatedTexture::Position(0.0f, -190.0f);
+    mCaptureBeam->AnimatedTexture::Rotation(180.0f);
+
+    mCaptureBeam->PhysEntity::Parent(this);
+    mCaptureBeam->PhysEntity::Position(0.0f, -190.0f);
+    mCaptureBeam->PhysEntity::Rotation(180.0f);
 
     AddCollider(new BoxCollider(mTextures[1]->ScaledDimensions()));
     mID = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Hostile);
@@ -177,6 +183,9 @@ Boss::Boss(int path, int index, bool challenge) : Enemy(path, index, challenge) 
 Boss::~Boss() {
     delete mCaptureBeam;
     mCaptureBeam = nullptr;
+
+    delete mHostage;
+    mHostage = nullptr;
 }
 
 void Boss::Hit(PhysEntity* other) {
@@ -184,6 +193,10 @@ void Boss::Hit(PhysEntity* other) {
         AudioManager::Instance()->PlaySFX("BossDestroyed.wav", 0, 2);
         sPlayer->AddScore(mCurrentState == Enemy::InFormation ? 150 : mCaptureDive ? 400 : 800);
         Enemy::Hit(other);
+        if (mDisplayHostage) {
+            sPlayer->DisplayCoPilot();
+            mDisplayHostage = false;
+        }
     }
     else {
         mWasHit = true;
@@ -234,27 +247,35 @@ void Boss::HandleDivingState() {
                 JoinFormation();
             }
         }
-        
         else {
             HandleCaptureBeam();
         }
+
     }
 }
 
 void Boss::HandleCaptureBeam() {
-    mCaptureBeam->Update();
+    mCaptureBeam->AnimatedTexture::Update();
+    mCaptureBeam->PhysEntity::Update();
+    if (mCaptureBeam->Catch()) {
+        mDisplayHostage = true;
+    }
     if (!mCaptureBeam->IsAnimating()) {
-        Translate(Vec2_Up * mSpeed * mTimer->DeltaTime());
+        mCapturing = false;
+        /*Translate(Vec2_Up * mSpeed * mTimer->DeltaTime());
         if (Position().y >= 910.0f) {
             Position(WorldFormationPosition().x, -20.0f);
             mCapturing = false;
-        }
-    }
-}
+        }*/
 
-void Boss::CaptureSuccess() {
-    if (mCaptureSuccess == true) {
-        
+        Vector2 dist = WorldFormationPosition() - Position();
+
+        Translate(dist.Normalized() * mSpeed * mTimer->DeltaTime(), World);
+        Rotation(atan2(dist.y, dist.x) * RAD_TO_DEG + 90.0f);
+
+        if (dist.MagnitudeSqr() < EPSILON * mSpeed / 25) {
+            JoinFormation();
+        }
     }
 }
 
@@ -272,6 +293,8 @@ void Boss::FlyInComplete() {
 }
 
 void Boss::Render() {
-    mHostage->Render();
+    if (mDisplayHostage) {
+        mHostage->Render();
+    }
     Enemy::Render();
 }

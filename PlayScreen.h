@@ -9,7 +9,7 @@ public:
 	PlayScreen();
 	~PlayScreen();
 
-	void StartNewGame();
+	void StartNewGame(int modeSelected);
 	void StartNextLevel();
 
 	bool GameOver();
@@ -36,4 +36,5 @@ private:
 	bool mGameStarted;
 	bool mLevelStarted;
 	int mCurrentStage;
+	int mModeSelected;
 };

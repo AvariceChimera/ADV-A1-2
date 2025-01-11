@@ -24,10 +24,9 @@ private:
 	bool mCaptureDive;
 	int mCurrentPath;
 	bool mCapturing;
-	
-	void CaptureSuccess();
 	bool mCaptureSuccess;
 
+	bool mDisplayHostage;
 	Texture* mHostage;
 
 	CaptureBeam* mCaptureBeam;

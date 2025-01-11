@@ -11,6 +11,7 @@ public:
 	~StartScreen();
 
 	void ChangeSelectedMode(int change);
+	bool GetSelectedMode();
 
 	void ResetAnimation();
 

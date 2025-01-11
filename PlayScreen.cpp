@@ -45,12 +45,14 @@ PlayScreen::~PlayScreen() {
 	mPlayer = nullptr;
 }
 
-void PlayScreen::StartNewGame() {
+void PlayScreen::StartNewGame(int modeSelected) {
 	delete mPlayer;
 	mPlayer = new Player();
 	mPlayer->Parent(this);
 	mPlayer->Position(Graphics::SCREEN_WIDTH * 0.4f, Graphics::SCREEN_HEIGHT * 0.8f);
 	mPlayer->Active(false);
+
+	mModeSelected = modeSelected;
 
 	mSideBar->SetHighScore(100000);
 	mSideBar->SetShips(mPlayer->Lives());
@@ -63,13 +65,19 @@ void PlayScreen::StartNewGame() {
 	mLevelStartTimer = 0.0f;
 	mCurrentStage = 0;
 
-	mAudio->PlayMusic("GameStart.wav", 0);
+	//mAudio->PlayMusic("GameStart.wav", 0);
 }
 
 void PlayScreen::StartNextLevel() {
-	mCurrentStage++;
 	mLevelStartTimer = 0.0f;
 	mLevelStarted = true;
+
+	if (mModeSelected == 1) {
+		mCurrentStage = -1;
+	}
+	else {
+		mCurrentStage++;
+	}
 
 	delete mLevel;
 	mLevel = new Level(mCurrentStage, mSideBar, mPlayer);

@@ -43,13 +43,17 @@ void ScreenManager::Update() {
 
 	switch (mCurrentScreen) {
 	case ScreenManager::Start:
+		if (mInput->KeyPressed(SDL_SCANCODE_RETURN)) {
+			mSelectedMode = mStartScreen->GetSelectedMode();
+
+		}
 		mStartScreen->Update();
 
 		if (mInput->KeyPressed(SDL_SCANCODE_RETURN)) {
 			//switch from start to play
 			mCurrentScreen = Play;
 			mStartScreen->ResetAnimation();
-			mPlayScreen->StartNewGame();
+			mPlayScreen->StartNewGame(mSelectedMode);
 		}
 		break;
 

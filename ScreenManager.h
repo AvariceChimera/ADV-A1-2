@@ -15,6 +15,8 @@ private:
 	ScreenManager();
 	~ScreenManager();
 
+	int mSelectedMode;
+
 	enum Screens {Start, Play};
 	Screens mCurrentScreen;
 

@@ -71,8 +71,6 @@ namespace SDLFramework {
 
 								mCollisionLayers[j][l]->Hit(mCollisionLayers[i][k]);
 							}
-
-
 						}
 					}
 				}

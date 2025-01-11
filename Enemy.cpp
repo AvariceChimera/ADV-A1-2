@@ -115,6 +115,58 @@ void Enemy::CreatePaths() {
 	sPaths.push_back(std::vector<Vector2>());
 	path->Sample(&sPaths[currentPath]);
 	delete path;
+
+	currentPath = 4;
+
+	path = new BezierPath();
+	path->AddCurve({
+		Vector2(screenMidPoint + -10.0f, 300.0f),
+		Vector2(screenMidPoint + 596.0f, -10.0f),
+		Vector2(screenMidPoint + 596.0f, 1024.0f),
+		Vector2(screenMidPoint + -10.0f, 700.0f) }, 1);
+
+	sPaths.push_back(std::vector<Vector2>());
+	path->Sample(&sPaths[currentPath]);
+	delete path;
+
+	currentPath = 5;
+
+	path = new BezierPath();
+	path->AddCurve({
+		Vector2(screenMidPoint - 596.0f, 300.0f),
+		Vector2(screenMidPoint - -10.0f, -10.0f),
+		Vector2(screenMidPoint - -10.0f, 1024.0f),
+		Vector2(screenMidPoint - 596.0f, 700.0f) }, 1);
+
+	sPaths.push_back(std::vector<Vector2>());
+	path->Sample(&sPaths[currentPath]);
+	delete path;
+
+	currentPath = 6;
+
+	path = new BezierPath();
+	path->AddCurve({
+		Vector2(596.0f, 80.0f),
+		Vector2(-10.0f, 80.0f),
+		Vector2(-10.0f, 886.0f),
+		Vector2(-10.0f, 1024.0f) }, 1);
+
+	sPaths.push_back(std::vector<Vector2>());
+	path->Sample(&sPaths[currentPath]);
+	delete path;
+
+	currentPath = 7;
+
+	path = new BezierPath();
+	path->AddCurve({
+		Vector2(temp2 + -10.0f, 80.0f),
+		Vector2(temp2 + 500.0f, 80.0f),
+		Vector2(temp2 + 596.0f, 886.0f),
+		Vector2(temp2 + 596.0f, 1024.0f) }, 1);
+
+	sPaths.push_back(std::vector<Vector2>());
+	path->Sample(&sPaths[currentPath]);
+	delete path;
 }
 
 void Enemy::SetFormation(Formation* formation) {
@@ -246,11 +298,17 @@ void Enemy::HandleFlyInState() {
 		}
 	}
 	else {
-		Vector2 dist = WorldFormationPosition() - Position();
-		Translate(dist.Normalized() * mSpeed * mTimer->DeltaTime(), World);
-		Rotation(atan2(dist.y, dist.x) * RAD_TO_DEG + 90.0f);
 
-		if (dist.MagnitudeSqr() < EPSILON * mSpeed / 25.0f) {
+		if (!mChallengeStage) {
+			Vector2 dist = WorldFormationPosition() - Position();
+			Translate(dist.Normalized() * mSpeed * mTimer->DeltaTime(), World);
+			Rotation(atan2(dist.y, dist.x) * RAD_TO_DEG + 90.0f);
+
+			if (dist.MagnitudeSqr() < EPSILON * mSpeed / 25.0f) {
+				FlyInComplete();
+			}
+		}
+		else {
 			FlyInComplete();
 		}
 

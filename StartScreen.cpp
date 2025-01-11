@@ -96,6 +96,11 @@ int StartScreen::SelectedMode() {
 	return mSelectedMode;
 }
 
+//for other things to use
+bool StartScreen::GetSelectedMode() {
+	return mSelectedMode;
+}
+
 void StartScreen::ChangeSelectedMode(int change) {
 	mSelectedMode += change;
 

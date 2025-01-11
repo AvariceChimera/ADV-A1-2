@@ -44,7 +44,7 @@ Level::Level(int stage, PlaySideBar* sideBar, Player* player) {
 	mGameOverLabel = new Texture("GAME OVER!", "emulogic.ttf", 32, { 150,0,0 });
 	mGameOverLabel->Parent(this);
 	mGameOverLabel->Position(Graphics::SCREEN_WIDTH * 0.4f, Graphics::SCREEN_HEIGHT * 0.5f);
-	
+
 	mGameOverDelay = 6.0f;
 	mGameOverTimer = 0.0f;
 	mGameOverLabelOnScreen = 1.0f;
@@ -56,7 +56,12 @@ Level::Level(int stage, PlaySideBar* sideBar, Player* player) {
 	mBossCount = 0;
 
 	std::string fullpath = SDL_GetBasePath();
-	fullpath.append("Data/LevelOne.xml");
+	if (mStage == 1){
+		fullpath.append("Data/LevelOne.xml");
+	}
+	else {
+		fullpath.append("Data/LevelTwo.xml");
+	}
 	mSpawningPatterns.LoadFile(fullpath.c_str());
 
 	mChallengeStage = mSpawningPatterns.FirstChildElement("Level")->FirstChildElement()->BoolAttribute("value");
@@ -181,9 +186,6 @@ void Level::HandleCollisions() {
 			mPlayer->Active(false);
 			mBackgroundStars->Scroll(false);
 		}
-		if (mCoPilot->WasHit()) {
-			mCoPilot->Active(false);
-		}
 	}
 }
 
@@ -193,6 +195,7 @@ void Level::HandlePlayerDeath() {
 			if (mRespawnTimer == 0.0f) {
 				//player done death anim and will now respawn
 				mPlayer->Visible(false);
+				mPlayer->Rotation(0.0f);
 			}
 
 			mRespawnTimer += mTimer->DeltaTime();
@@ -252,7 +255,7 @@ void Level::HandleEnemySpawning() {
 						}
 						else {
 							// change to true if/when challenge stages are made
-							mEnemies.push_back(new Butterfly(path, index, false));
+							mEnemies.push_back(new Butterfly(path, index, true));
 						}
 					}
 					else if (type.compare("Wasp") == 0) {
@@ -261,7 +264,7 @@ void Level::HandleEnemySpawning() {
 							mWaspCount++;
 						}
 						else {
-							mEnemies.push_back(new Wasp(path, index, false, false));
+							mEnemies.push_back(new Wasp(path, index, true, false));
 						}
 					}
 					else if (type.compare("Boss") == 0) {
@@ -270,7 +273,7 @@ void Level::HandleEnemySpawning() {
 							mBossCount++;
 						}
 						else {
-							mEnemies.push_back(new Boss(path, index, false));
+							mEnemies.push_back(new Boss(path, index, true));
 						}
 					}
 
